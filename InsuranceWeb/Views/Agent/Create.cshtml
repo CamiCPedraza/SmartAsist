@@ -1,0 +1,140 @@
+﻿@model InsuranceWeb.Models.Agent
+
+@{
+    ViewData["Title"] = "Nuevo agente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Nuevo agente</h1>
+
+
+
+<!-- partial -->
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Nombre</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Ocupaci&oacute;n</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ocupaci&oacute;n">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Tipo de acceso</label>
+                                <select class="form-control">
+                                    <option>Ventas</option>
+                                    <option>Administrativo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo Electr&oacute;nico</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Direcci&oacute;n</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Direcci&oacute;n">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Tipo de documento</label>
+                                <select class="form-control">
+                                    <option>Cedula</option>
+                                    <option>Pasaporte</option>
+                                    <option>RUC</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">N&uacute;mero de Documento</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="N&uacute;mero de Documento">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Estado civil</label>
+                                <select class="form-control">
+                                    <option>Casada/o</option>
+                                    <option>Soltera/o</option>
+                                    <option>Separada/o</option>
+                                    <option>Viuda/o</option>
+                                    <option>Uni&oacute;n libre</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Tel&eacute;fono</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Tel&eacute;fono">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Tel&eacute;fono M&oacute;vil</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="M&oacute;vil">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Salario</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Salario">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Comisi&oacute;n</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Comisi&oacute;n">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="HasDocuments" /> @Html.DisplayNameFor(model => model.HasDocuments)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check form-check-flat form-check-primary">
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Agregar</button>
+                    <button class="btn btn-light">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Ir a la lista de agentes</a>
+</div>
