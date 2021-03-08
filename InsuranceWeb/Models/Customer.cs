@@ -3,7 +3,7 @@ using System;
 
 namespace InsuranceWeb.Models
 {
-    public class Customer : IEntity
+    public class Customer : Entity
     {
         public string Title { get; set; }
         public DocumentType DocumentType { get; set; }
@@ -26,7 +26,6 @@ namespace InsuranceWeb.Models
         public string Activity { get; set; }
         public string Contact { get; set; }
         public bool LegalRepresentant { get; set; }
-        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }

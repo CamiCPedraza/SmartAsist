@@ -2,19 +2,21 @@
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using InsuranceWeb.Models;
+using InsuranceWeb.Repository.Definitions;
+using InsuranceWeb.Transversal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InsuranceWeb.Repository
+namespace InsuranceWeb.Repository.Implementations
 {
-    public class ReadersRepository : IReadersRepository
+    public class Repository<T> : IRepository<T> where T : Entity
     {
         private readonly AmazonDynamoDBClient _client;
         private readonly DynamoDBContext _context;
 
-        public ReadersRepository()
+        public Repository()
         {
             AmazonDynamoDBConfig clientConfig = new AmazonDynamoDBConfig();
             // This client will access the US East 1 region.
@@ -23,23 +25,15 @@ namespace InsuranceWeb.Repository
             _context = new DynamoDBContext(_client);
         }
 
-        public async Task Add(AditionalServices entity)
+        public bool Add(T model)
         {
-            var reader = new AditionalServices
-            {
-                Id = entity.Id,
-                CarAssistance = entity.CarAssistance,
-                HomeAssistance = entity.HomeAssistance,
-                LegalAssistance = entity.LegalAssistance,
-                TechAssistance = entity.TechAssistance
-            };
-
-            await _context.SaveAsync(reader);
+            var result = _context.SaveAsync(model);
+            return result.IsCompletedSuccessfully;
         }
 
-        public Task<AditionalServices> All(string paginationToken = "")
+        public IEnumerable<T> GetAll(T model)
         {
-            throw new NotImplementedException();
+            return _context.QueryAsync<T>($"Amazon DynamoDB#DynamoDB{model} 1").GetRemainingAsync().Result;
         }
 
         public Task<IEnumerable<AditionalServices>> Find(AditionalServices searchReq)
@@ -47,14 +41,14 @@ namespace InsuranceWeb.Repository
             throw new NotImplementedException();
         }
 
-        public Task Remove(Guid readerId)
+        public bool Remove(T model)
         {
-            throw new NotImplementedException();
+            return _context.DeleteAsync(model).IsCompletedSuccessfully;
         }
 
-        public Task<AditionalServices> Single(Guid readerId)
+        public T FindById(Guid readerId)
         {
-            throw new NotImplementedException();
+            return _context.LoadAsync<T>(readerId).Result;
         }
 
         public Task Update(Guid readerId, AditionalServices entity)

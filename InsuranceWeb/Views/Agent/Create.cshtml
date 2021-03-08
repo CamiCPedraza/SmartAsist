@@ -14,25 +14,25 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <form class="forms-sample">
+                <form class="forms-sample" method="post" action="@Url.Action("Create", "Agent")">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Nombre</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Nombre">
+                                <label asp-for="Name">Nombre</label>
+                                <input type="text" asp-for="Name" class="form-control" id="name" placeholder="Nombre">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Ocupaci&oacute;n</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ocupaci&oacute;n">
+                                <label asp-for="Ocupation">Ocupaci&oacute;n</label>
+                                <input type="text" asp-for="Ocupation" class="form-control" id="ocupation" placeholder="Ocupaci&oacute;n">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tipo de acceso</label>
+                                <label asp-for="AccessType">Tipo de acceso</label>
                                 <select class="form-control">
                                     <option>Ventas</option>
                                     <option>Administrativo</option>
@@ -41,21 +41,21 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Correo Electr&oacute;nico</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo">
+                                <label asp-for="Email">Correo Electr&oacute;nico</label>
+                                <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Correo">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Direcci&oacute;n</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Direcci&oacute;n">
+                                <label asp-for="Address">Direcci&oacute;n</label>
+                                <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Direcci&oacute;n">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tipo de documento</label>
+                                <label asp-for="DocumentType">Tipo de documento</label>
                                 <select class="form-control">
                                     <option>Cedula</option>
                                     <option>Pasaporte</option>
@@ -67,13 +67,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">N&uacute;mero de Documento</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="N&uacute;mero de Documento">
+                                <label asp-for="Document">N&uacute;mero de Documento</label>
+                                <input asp-for="Document" type="text" class="form-control" id="document" placeholder="N&uacute;mero de Documento">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Estado civil</label>
+                                <label asp-for="MarriageState">Estado civil</label>
                                 <select class="form-control">
                                     <option>Casada/o</option>
                                     <option>Soltera/o</option>
@@ -87,30 +87,30 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Tel&eacute;fono</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Tel&eacute;fono">
+                                <label asp-for="Phone">Tel&eacute;fono</label>
+                                <input asp-for="Phone" type="text" class="form-control" id="phine" placeholder="Tel&eacute;fono">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Tel&eacute;fono M&oacute;vil</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="M&oacute;vil">
+                                <label asp-for="Mobile">Tel&eacute;fono M&oacute;vil</label>
+                                <input asp-for="Mobile" type="text" class="form-control" id="mobile" placeholder="M&oacute;vil">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Salario</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Salario">
+                                <label asp-for="Salary">Salario</label>
+                                <input asp-for="Salary" type="text" class="form-control" id="salary" placeholder="Salario">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Comisi&oacute;n</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Comisi&oacute;n">
+                                <label asp-for="Commission">Comisi&oacute;n</label>
+                                <input asp-for="Commission" type="text" class="form-control" id="comission" placeholder="Comisi&oacute;n">
                             </div>
                         </div>
                     </div>
@@ -138,3 +138,51 @@
 <div>
     <a asp-action="Index">Ir a la lista de agentes</a>
 </div>
+
+<script>
+    $(function () {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        $("#findCode").click(function () {
+            var corpcode = $("#codigo").val();
+            if ($("#codigo").val() == 0 || $("#codigo").val() == "") {
+                toastr["warning"]("Por favor ingrese el Código Corporativo a Consultar.")
+            }
+            else {
+                $.ajax({
+                    url: '@Url.Action("FindCode", "CorporateAdmin")',
+                    type: 'POST',
+                    data: {
+                        "corpcode": corpcode
+                    },
+                    success: function (result)
+                    {
+                        $("#codigo").prop("disabled", true);
+                        $("#negofare").prop("disabled", true);
+                        $("#activo").prop("disabled", true);
+                    },
+                    error: function () {
+                        console.log("Error en la consulta");
+                        toastr["error"]("El Código Corporativo no Existe.");
+                    }
+                });
+            }
+        });
+    });
+
+</script>

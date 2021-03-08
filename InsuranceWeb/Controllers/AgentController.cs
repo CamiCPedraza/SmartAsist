@@ -1,14 +1,24 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using InsuranceWeb.Models;
+using InsuranceWeb.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InsuranceWeb.Controllers
 {
     public class AgentController : Controller
     {
+        private readonly ILogger<AgentController> _logger;
+        private readonly IAgentService _agentService;
+
+        public AgentController(ILogger<AgentController> logger, IAgentService agentService)
+        {
+            _logger = logger;
+            _agentService = agentService;
+        }
+
         // GET: AgentController
         public ActionResult Index()
         {
@@ -29,12 +39,36 @@ namespace InsuranceWeb.Controllers
 
         // POST: AgentController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Agent model)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    var result = _agentService.SaveAgent(model);
+                    var list = new List<Agent>();
+                    list.Add(new Agent
+                    {
+                        AccessType = Transversal.AccessType.Administrativo,
+                        Address = "Direccion",
+                        Commission = "10000",
+                        CreatedDate = DateTime.UtcNow,
+                        Document = "76544567",
+                        DocumentType = Transversal.DocumentType.Cedula,
+                        Email = "email@email.com",
+                        HasDocuments = false,
+                        Id = new Guid(),
+                        MarriageState = Transversal.MarriageState.Soltero,
+                        Mobile = "55764565",
+                        Name = "Name",
+                        Ocupation = "NA",
+                        Phone = "6576547",
+                        Salary = "758658"
+                    });
+                    return View(nameof(Index), list);
+                }
+                else
+                    return RedirectToAction(nameof(Index));
             }
             catch
             {

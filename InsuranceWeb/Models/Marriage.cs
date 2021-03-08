@@ -3,11 +3,10 @@ using System;
 
 namespace InsuranceWeb.Models
 {
-    public class Marriage : IEntity
+    public class Marriage : Entity
     {
         public DocumentType DocumentType { get; set; }
         public string Document { get; set; }
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }

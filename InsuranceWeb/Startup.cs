@@ -1,13 +1,14 @@
+using InsuranceWeb.Repository;
+using InsuranceWeb.Repository.Definitions;
+using InsuranceWeb.Repository.Implementations;
+using InsuranceWeb.Services.Implementations;
+using InsuranceWeb.Services.Interfaces;
+using InsuranceWeb.Transversal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InsuranceWeb
 {
@@ -24,6 +25,9 @@ namespace InsuranceWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IAgentService, AgentService>();
+
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
